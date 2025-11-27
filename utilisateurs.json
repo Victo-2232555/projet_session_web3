@@ -1,0 +1,47 @@
+[
+  {
+    "nom": "Akakpo",
+    "prenom": "Komivi Michel",
+    "courriel": "komivi.akakpo@silverpresta.com",
+    "mot_de_passe": "Azerty@123",
+    "role": "admin",
+    "actif": true,
+    "date_creation": "2024-10-01T10:00:00.000Z"
+  },
+  {
+    "nom": "Sambaso",
+    "prenom": "Pape",
+    "courriel": "pape.sambaso@silverpresta.com",
+    "mot_de_passe": "Samba@2024",
+    "role": "gestionnaire",
+    "actif": true,
+    "date_creation": "2024-10-01T10:15:00.000Z"
+  },
+  {
+    "nom": "Anani",
+    "prenom": "Komla Adjéwoda",
+    "courriel": "komla.anani@silverpresta.com",
+    "mot_de_passe": "Adjewo@2024",
+    "role": "employe",
+    "actif": true,
+    "date_creation": "2024-10-01T10:30:00.000Z"
+  },
+  {
+    "nom": "Ground",
+    "prenom": "Milésim",
+    "courriel": "milesim.ground@silverpresta.com",
+    "mot_de_passe": "Milesim@2024",
+    "role": "employe",
+    "actif": true,
+    "date_creation": "2024-10-01T10:45:00.000Z"
+  },
+  {
+    "nom": "Desrochers",
+    "prenom": "Myriam",
+    "courriel": "myriam.desrochers@silverpresta.com",
+    "mot_de_passe": "Myriam@2024",
+    "role": "gestionnaire",
+    "actif": true,
+    "date_creation": "2024-10-01T11:00:00.000Z"
+  }
+]

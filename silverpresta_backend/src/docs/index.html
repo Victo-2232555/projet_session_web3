@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Documentation API</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 1000px; margin: 0 auto; }
+    h1, h2, h3 { color: #202124; }
+    code { background: #f1f3f4; padding: 2px 4px; border-radius: 3px; }
+    pre { background: #f1f3f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 16px; }
+    th, td { border: 1px solid #dadce0; padding: 6px 8px; text-align: left; }
+    th { background: #f8f9fa; }
+    .method { font-weight: bold; text-transform: uppercase; }
+    .get { color: #1a73e8; }
+    .post { color: #0f9d58; }
+    .put { color: #e37400; }
+    .delete { color: #d93025; }
+    hr { margin: 32px 0; }
+  </style>
+</head>
+<!--
+  Cette documentation est inspiré de Google classroom API docs : 
+  https://developers.google.com/workspace/classroom/reference/rest?hl=fr
+  Elle utilise des commentaires HTML pour structurer le contenu
+-->
+
+<body>
+   
+  <h1>API SilverPresta – Référence REST</h1>
+  <p>
+    Cette page décrit les ressources et méthodes de l’API de gestion d’inventaire SilverPresta.
+  </p>
+    <ul>
+    <li><strong>Version de l’API :</strong> 1.0.0</li>
+    <li><strong>Date de publication :</strong> 19 Nov 2025</li>
+    <li><strong>Auteur :</strong> Michel Komivi AKAKPO</li>
+    <li>
+        <a href="https://developers.google.com/workspace/classroom/reference/rest?hl=fr"
+          target="_blank">
+            Inspiré de Google Classroom API Docs
+        </a>
+    </li>
+  </ul>
+
+  <h2>Vue d’ensemble</h2>
+  <table>
+    <tr><th>Base URL</th><td><code>/api</code></td></tr>
+    <tr><th>Format des réponses</th><td><code>application/json</code></td></tr>
+    <tr><th>Authentification</th><td>Pour ce projet de session, l'authentification n'est pas nécessaire</td></tr>
+  </table>
+
+  <h2>Ressources</h2>
+  <ul>
+    <li><a href="#ressource-produits">Produits</a></li> <!--Renvoie aux produits-->
+    <li><a href="#ressource-utilisateurs">Utilisateurs</a></li><!--Renvoie aux utilisateurs-->
+  </ul>
+
+  <hr>
+
+  <!-- ========================= PRODUITS ========================= -->
+
+  <h2 id="ressource-produits">Ressource : Produits</h2>
+  <p>Représente un produit de l’inventaire.</p>
+
+  <h3>Structure d’un produit</h3>
+  <pre>
+    <code>{
+  "_id": "ObjectId",
+  "nom": "T-shirt coton bio",
+  "code": "TSH001",
+  "categorie": "Vêtements",
+  "description": "T-shirt 100% coton biologique, confortable et respirant.",
+  "quantite": 50,
+  "seuilReapprovisionnement": 10,
+  "prixVente": 24.99,
+  "prixAchat": 12.5,
+  "fournisseur": "Textile Éco",
+  "ajoutePar": "ObjectId de l'utilisateur",
+  "misAJourPar": "ObjectId de l'utilisateur",
+  "urlImage": "https://silverpresta.com/images/tshirt_coton_bio.jpg",
+  "actif": true
+}</code>
+</pre>
+
+  <!-- GET ALL : Afficher la liste des produits-->
+  <h3><span class="method get">GET</span> /api/produits/all</h3>
+  <p>Retourne la liste de tous les produits.</p>
+
+  <h4>Réponse</h4>
+  <pre><code>{
+  "produits": 
+  [
+    "produit": {
+        "_id": "691e9b4312a73eb47e7a7324",
+        "nom": "T-shirt imprimé moderne",
+        "code": "TSH002",
+        "categorie": "Vêtements",
+        "description": "T-shirt confortable avec motif moderne.",
+        "quantite": 120,
+        "seuilReapprovisionnement": 20,
+        "prixVente": 22.99,
+        "prixAchat": 11,
+        "fournisseur": "UrbanStyle",
+        "ajoutePar": "671bb0f5c2d4e0f91a1a01a2",
+        "misAJourPar": "671bb0f5c2d4e0f91a1a01a2",
+        "urlImage": "https://silverpresta.com/images/tshirt_modern.jpg",
+        "actif": true,
+        "tags": [
+            "mode",
+            "tendance"
+        ],
+        "dateAjout": "2025-11-20T18:12:45.739Z",
+        "dateMiseAJour": "2025-11-20T18:12:45.739Z"
+    },
+    {
+        Produit 2
+    },
+    {
+        Produit 3
+    }
+
+  ]
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>La liste des produits est retournée avec succès</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- GET ONE : Affiche un produit-->
+  <h3><span class="method get">GET</span> /api/produits/:id</h3>
+  <p>Retourne un produit à partir de son identifiant.</p>
+
+  <h4>Paramètres de chemin</h4>
+  <table>
+    <tr><th>Nom</th><th>Type</th><th>Description</th></tr>
+    <tr><td>id</td><td>string (ObjectId)</td><td>Identifiant unique du produit</td></tr>
+  </table>
+
+  <h4>Réponse</h4>
+  <pre><code>{
+
+  {
+    "produit": {
+        "_id": ,
+        "nom": ,
+        "code": ,
+        "categorie": ,
+        "description": ,
+        "quantite":,
+        "seuilReapprovisionnement":,
+        "prixVente": ,
+        "prixAchat": ,
+        "fournisseur": ,
+        "ajoutePar": ,
+        "misAJourPar": ,
+        "urlImage": ,
+        "actif": ,
+        "dateAjout": ,
+        "dateMiseAJour": "
+    }
+}
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>Le produit est trouvé avec succès</td></tr>
+    <tr><td>404</td><td>Le produit n'est pas trouvé</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- Affiche un produit avec Filtre-->
+  <h3><span class="method get">GETWITHFILTRES</span> /api/produits/filtres?categorie=Chaussures&actif=true&quantite=35</h3>
+  <p>Retourne un produit selon les paramètres du filtres</p>
+
+  <h4>Paramètres de chemin</h4>
+  <table>
+    <tr><th>Nom</th><th>Type</th><th>Requis</th><th>Description</th></tr>
+    <tr>
+      <td>categorie</td>
+      <td>string</td>
+      <td>Non</td>
+      <td>Catégorie du produit (ex. <code>Chaussures</code>, <code>Vêtements</code>).</td>
+    </tr>
+    <tr>
+      <td>actif</td>
+      <td>boolean</td>
+      <td>Non</td>
+      <td><code>true</code> pour les produits actifs, <code>false</code> pour les produits inactifs.</td>
+    </tr>
+    <tr>
+      <td>quantite</td>
+      <td>number</td>
+      <td>Non</td>
+      <td>Quantité minimale en stock (ex. <code>35</code> retourne les produits avec une quantité ≥ 35).</td>
+    </tr>
+  </table>
+
+  <h4>Réponse</h4>
+  <pre><code>{
+  "produits": [
+    {
+      "_id": "68e45f9402107571ae37e61b",
+      "nom": "Chaussures de sport AirFlex",
+      "code": "CHA001",
+      "categorie": "Chaussures",
+      "description": "Chaussures de sport légères et respirantes.",
+      "quantite": 40,
+      "seuilReapprovisionnement": 5,
+      "prixVente": 79.99,
+      "prixAchat": 45.5,
+      "fournisseur": "SportLine",
+      "actif": true,
+      "tags": ["sport", "best-seller"]
+    }
+    // ... autres produits
+  ]
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>Le ou les produits est (sont) trouvé(s) avec succès</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- POST ADD : Ajout d'un produit à la base de données-->
+  <h3><span class="method post">POST</span> /api/produits/add</h3>
+  <p>Ajoute un nouveau produit à l’inventaire.</p>
+
+  <h4>Corps de la requête</h4>
+  <pre><code>{
+  "produit": {
+    "nom": "Chaussures de sport AirFlex",
+    "code": "CHA001",
+    "categorie": "Chaussures",
+    "description": "Chaussures de sport légères et respirantes.",
+    "quantite": 25,
+    "seuilReapprovisionnement": 5,
+    "prixVente": 79.99,
+    "prixAchat": 45.50,
+    "fournisseur": "SportLine",
+    "ajoutePar": "ObjectId utilisateur",
+    "misAJourPar": "ObjectId utilisateur",
+    "urlImage": "https://silverpresta.com/images/chaussures_airflex.jpg",
+    "actif": true
+  }
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>201</td><td>Le produit est créé avec succès</td></tr>
+    <tr><td>400</td><td>Les données sont invalides (erreur de validation)</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- PUT UPDATE : Pour faire la mise à jour d'un produit-->
+  <h3><span class="method put">PUT</span> /api/produits/update</h3>
+  <p>Met à jour un produit existant.</p>
+
+  <h4>Corps de la requête</h4>
+  <pre><code>{
+ 
+  "produit": {
+    "id": "68e9de286563480f6f87390c",
+    "nom": "Chaussures de sport AirFlex",
+    "code": "CHA001",
+    "categorie": "Chaussures",
+    "description": "Chaussures de sport légères et respirantes.",
+    "quantite": 50,
+    "seuilReapprovisionnement": 5,
+    "prixVente": 79.99,
+    "prixAchat": 45.50,
+    "fournisseur": "SportLine",
+    "ajoutePar": "671bb0f5c2d4e0f91a1a01a2",
+    "misAJourPar": "671bb0f5c2d4e0f91a1a01a2",
+    "urlImage": "https://silverpresta.com/images/chaussures_airflex.jpg",
+    "actif": true
+  }
+
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>Mise à jour réussie</td></tr>
+    <tr><td>404</td><td>Le poduit n'est pas trouvé</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- DELETE : Pour supprimer un produit de la base de donnée-->
+  <h3><span class="method delete">DELETE</span> /api/produits/delete/:id</h3>
+  <p>Supprime un produit.</p>
+
+  <h4>Paramètres de chemin</h4>
+  <table>
+    <tr><th>Nom</th><th>Type</th><th>Description</th></tr>
+    <tr><td>id</td><td>string (ObjectId)</td><td>Identifiant du produit à supprimer</td></tr>
+  </table>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>Produit supprimé</td></tr>
+    <tr><td>404</td><td>Produit non trouvé</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- ========================= UTILISATEURS ========================= -->
+
+  <h2 id="ressource-utilisateurs">Ressource : Utilisateurs</h2>
+  <p>Représente un utilisateur du système (administrateur, gestionnaire, employé).</p>
+
+  <h3>Structure d’un utilisateur</h3>
+  <pre><code>{
+    "_id": "ObjectId",
+    "nom": "Desrochers",
+    "prenom": "Myriam",
+    "courriel": "myriam.desrochers@silverpresta.com",
+    "mot_de_passe": "Myriam@2024",
+    "role": "gestionnaire",
+    "actif": true,
+    "date_creation": "2024-10-01T11:00:00.000Z"
+}</code></pre>
+
+  <!-- GET ALL : Affiche tous les utilisateurs-->
+  <h3><span class="method get">GET</span> /api/utilisateurs/all</h3>
+  <p>Retourne tous les utilisateurs du système</p>
+
+  <h4>Réponse</h4>
+  <pre><code>{
+
+  {
+    "utilisateurs": 
+    [
+      {
+        "_id": "68e45f9402107571ae37e617",
+        "nom": "Akakpo",
+        "prenom": "Komivi Michel",
+        "courriel": "komivi.akakpo@silverpresta.com",
+        "mot_de_passe": "Azerty@123",
+        "role": "admin",
+        "actif": true,
+        "date_creation": "2024-10-01T10:00:00.000Z"
+      },
+      {
+          Utilisateur 2
+      },
+      {
+          Utilisateur 3
+      }
+
+    ]
+  }   
+}</code></pre>
+    <h4>Codes de réponse</h4>
+    <table>
+        <tr><th>Code</th><th>Description</th></tr>
+        <tr><td>200</td><td>La liste des utilisateurs est retournée avec succès</td></tr>
+        <tr><td>500</td><td>Erreur serveur</td></tr>
+    </table>
+    
+    <hr>
+
+<!-- GET ONE : Affiche un utilisateur-->
+  <h3><span class="method get">GET</span> api/utilisateurs/id</h3>
+  <p>Retourne un utilisateur à partir de son identifiant.</p>
+  <h4>Paramètres de chemin</h4>
+  <table>
+    <tr><th>Nom</th><th>Type</th><th>Description</th></tr>
+    <tr><td>id</td><td>string (ObjectId)</td><td>Identifiant unique du produit</td></tr>
+  </table>
+
+  <h4>Réponse</h4>
+  <pre><code>
+ {
+    "utilisateur": 
+    [   
+        {
+            "_id": ,
+            "nom": ,
+            "prenom": ,
+            "courriel": ,
+            "mot_de_passe": ,
+            "role": , 
+            "actif": ,
+            "date_creation": 
+        }
+    
+    ]   
+
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>L'utilisateur est trouvé avec succès</td></tr>
+    <tr><td>404</td><td>L'utilisateur n'est pas trouvé</td></tr>  
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- POST ADD : Ajouter un utilisateur -->
+  <h3><span class="method post">POST</span> /api/utilisateurs/add</h3>
+  <p>Ajoute un nouveau utilisateur à la base de donnée.</p>
+
+  <h4>Corps de la requête</h4>
+  <pre><code>
+{
+
+    "utilisateur": 
+    {
+        "nom": "Reddinton",
+        "prenom": "Noire",
+        "courriel": "noire.reddinton@silverpresta.com",
+        "mot_de_passe": "Noire@2024",
+        "role": "employe",
+        "actif": true
+    }
+
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>201</td><td>L'utilisateur est créé avec succès</td></tr>
+    <tr><td>400</td><td>Les données sont invalides (erreur de validation)</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- PUT UPDATE : La mise à jour d'un utilisateur-->
+  <h3><span class="method put">PUT</span> /api/utilisateurs/update</h3>
+  <p>Met à jour un utilisateur existant.</p>
+
+  <h4>Corps de la requête</h4>
+  <pre><code>{
+ 
+  "utilisateur": {
+        "id": "68ea032cf0db8856afb13c43",
+        "nom": "Reddinton",
+        "prenom": "Noire",
+        "courriel": "noire.reddinton@silverpresta.com",
+        "mot_de_passe": "NoireEtBlanc@2024",
+        "role": "employe",
+        "actif": true
+    }
+
+}</code></pre>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>Mise à jour réussie</td></tr>
+    <tr><td>404</td><td>L'utilisateur n'Est pas trouvé</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+
+  <!-- DELETE : Pour supprimer un utilisateur de la base-->
+  <h3><span class="method delete">DELETE</span> /api/utilisateurs/delete/:id</h3>
+  <p>Supprime un utilisateur </p>
+
+  <h4>Paramètres de chemin</h4>
+  <table>
+    <tr><th>Nom</th><th>Type</th><th>Description</th></tr>
+    <tr><td>id</td><td>string (ObjectId)</td><td>Identifiant d'utilisateur</td></tr>
+  </table>
+
+  <h4>Codes de réponse</h4>
+  <table>
+    <tr><th>Code</th><th>Description</th></tr>
+    <tr><td>200</td><td>L'utilisateur est supprimé</td></tr>
+    <tr><td>404</td><td>L'utilisateur n'est pas trouvé</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <hr>
+  
+</body>
+</html>
