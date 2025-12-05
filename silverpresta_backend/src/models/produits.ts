@@ -1,3 +1,5 @@
+
+// src/models/produits.ts
 import { Schema, model, Types } from 'mongoose';
 
 // Interface du produit

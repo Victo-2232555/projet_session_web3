@@ -1,4 +1,5 @@
 
+//src/common/constants/Paths.ts
 export default {
   Base: '/api', // Donne accès à la documentation de l'API via /api
   GenerateToken: {

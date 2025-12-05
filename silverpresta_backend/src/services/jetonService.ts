@@ -1,8 +1,9 @@
 /** 
- * Ce code est tire du site de cours
+ * Ce code est tiré du site de cours
  * adapté par Michel Komivi Akakpo
  */
 
+//src/services/jetonService.ts
 // **** Variables **** //
 
 import { IUserLogin } from '@src/models/user';

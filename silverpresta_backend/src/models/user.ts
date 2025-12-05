@@ -1,6 +1,6 @@
 /** 
  * Ce code est inspiré du cours de Web 3 de @author Etienne Rivard
- * adapté Michel Komivi Akakpo
+ * adapté par l'élève Michel Komivi Akakpo
  */
 
 import { isString } from 'jet-validators';

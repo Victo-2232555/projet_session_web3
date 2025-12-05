@@ -1,0 +1,14 @@
+{
+  "app.title": "SilverPresta - Gestion d'inventaire",
+  "app.header": "Tableau de bord SilverPresta",
+
+  "login.title": "Connexion",
+  "login.email": "Courriel",
+  "login.password": "Mot de passe",
+  "login.submit": "Se connecter",
+  "login.error": "Identifiants invalides. Veuillez réessayer.",
+
+  "produits.title": "Liste des produits",
+  "produits.empty": "Aucun produit pour le moment.",
+  "produits.loading": "Chargement des produits..."
+}

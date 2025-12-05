@@ -1,3 +1,5 @@
+
+import cors from 'cors';//pour autoriser les requetes venant du frontend
 import morgan from 'morgan';
 import path from 'path';
 import helmet from 'helmet';
@@ -14,13 +16,22 @@ import { NodeEnvs } from '@src/common/constants';
 
 import authenticateToken from './services/authenticateToken';
 
+const app = express();
+
+/******************************************************************************
+                        CORS Configuration
+******************************************************************************/
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // frontend Vite
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }),
+);
 
 /******************************************************************************
                                 Setup
-******************************************************************************/
-
-const app = express();
-
+*******************************************************************************/
 
 // **** Middleware **** //
 

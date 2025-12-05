@@ -3,6 +3,7 @@
  * adapté par Michel Komivi Akakpo
  */
 
+//src/routes/index.ts
 import { Request, Response, NextFunction, Router } from 'express';
 
 import Paths from '@src/common/constants/Paths';
@@ -88,7 +89,8 @@ function validateUtilisateur(req: Request, res: Response, next: NextFunction) {
 const tokenRouter = Router();
 
 // Générer un jeton (login)
-tokenRouter.get(Paths.GenerateToken.Get, JetonRoutes.generateToken);
+tokenRouter.post(Paths.GenerateToken.Get, JetonRoutes.generateToken);
+
 
 // Ajouter le tokenRouter sur /api/generatetoken
 apiRouter.use(Paths.GenerateToken.Base, tokenRouter);
