@@ -1,14 +1,14 @@
 {
-  "app.title": "SilverPresta - Inventory management",
-  "app.header": "SilverPresta Dashboard",
-
-  "login.title": "Login",
-  "login.email": "Email",
-  "login.password": "Password",
-  "login.submit": "Sign in",
-  "login.error": "Invalid credentials. Please try again.",
-
-  "produits.title": "Products list",
-  "produits.empty": "No products yet.",
-  "produits.loading": "Loading products..."
+  "produits.titre": "Products list",
+  "produits.bouton.filtrer": "Filter products",
+  "produits.bouton.ajouter": "Add product",
+  "produits.table.nom": "Name",
+  "produits.table.code": "Code",
+  "produits.table.categorie": "Category",
+  "produits.table.quantite": "Quantity",
+  "produits.table.prix": "Price ($)",
+  "produits.table.actions": "Actions",
+  "produits.actions.modifier": "Edit",
+  "produits.actions.supprimer": "Delete",
+  "produits.aucun": "No products found."
 }

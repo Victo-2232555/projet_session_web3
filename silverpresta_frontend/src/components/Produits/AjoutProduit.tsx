@@ -90,7 +90,7 @@ function AjoutProduit() {
     }
 
     try {
-      // 👉 Données utiles pour le produit
+      // Données utiles pour le produit
       const produitPayload = {
         nom: form.nom.trim(),
         code: form.code.trim(),
@@ -99,11 +99,8 @@ function AjoutProduit() {
         prixVente: Number(form.prixVente),
       };
 
-      console.log('Payload produit côté front :', produitPayload);
-
-      // ❗ IMPORTANT : on enveloppe dans { produit: ... }
-      // car le backend utilise probablement req.body.produit
-      const response = await axios.post(
+      // parce que le backend utilise req.body.produit
+      await axios.post(
         `${API_BASE_URL}/api/produits/add`,
         { produit: produitPayload },
         {
@@ -112,8 +109,6 @@ function AjoutProduit() {
           },
         },
       );
-
-      console.log('Réponse backend:', response.data);
 
       setMessage('Produit ajouté avec succès.');
 

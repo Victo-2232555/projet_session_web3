@@ -1,48 +1,79 @@
 // src/components/Menu/Menu.tsx
-
 import { useContext, useEffect } from 'react';
-import { Outlet, useNavigate, Link } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { LoginContext } from '../../contexts/LoginContext';
 
-function Menu() {
-  const { isLoggedIn, logout } = useContext(LoginContext);
+interface IMenuProps {
+  setLocale: (lang: 'fr' | 'en') => void;
+  locale: 'fr' | 'en';
+}
 
+function Menu({ setLocale, locale }: IMenuProps) {
+  const { isLoggedIn, logout } = useContext(LoginContext);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!isLoggedIn) {
       navigate('/login');
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
 
   return (
     <>
       <nav className="bg-gray-800 p-4">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container mx-auto flex items-center justify-between">
           
-          <ul className="flex space-x-6">
+          {/* MENU GAUCHE */}
+          <ul className="flex space-x-4">
             <li>
-              <Link to="/utilisateurs" className="text-white hover:text-gray-300">
-                Utilisateurs
-              </Link>
+              <a href="/produits" className="text-white hover:text-gray-300">
+                Produits
+              </a>
             </li>
             <li>
-              <Link to="/produits" className="text-white hover:text-gray-300">
-                Produits
-              </Link>
+              <a href="/utilisateurs" className="text-white hover:text-gray-300">
+                Utilisateurs
+              </a>
             </li>
           </ul>
 
-          <button
-            className="text-white hover:text-red-400"
-            onClick={() => logout()}
-          >
-            Se déconnecter
-          </button>
+          {/* ACTIONS À DROITE */}
+          <div className="flex items-center gap-3">
 
+            {/* Sélecteur de langue */}
+            <button
+              onClick={() => setLocale('fr')}
+              className={`px-3 py-1 rounded text-sm ${
+                locale === 'fr'
+                  ? 'bg-white text-gray-800 font-semibold'
+                  : 'text-white border border-white'
+              }`}
+            >
+              FR
+            </button>
+
+            <button
+              onClick={() => setLocale('en')}
+              className={`px-3 py-1 rounded text-sm ${
+                locale === 'en'
+                  ? 'bg-white text-gray-800 font-semibold'
+                  : 'text-white border border-white'
+              }`}
+            >
+              EN
+            </button>
+
+            {/* Déconnexion */}
+            <button
+              className="text-white hover:text-gray-300 ml-4"
+              onClick={logout}
+            >
+              Se déconnecter
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* Affichage du contenu des pages enfants */}
       <Outlet />
     </>
   );

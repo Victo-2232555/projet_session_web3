@@ -1,14 +1,14 @@
 {
-  "app.title": "SilverPresta - Gestion d'inventaire",
-  "app.header": "Tableau de bord SilverPresta",
-
-  "login.title": "Connexion",
-  "login.email": "Courriel",
-  "login.password": "Mot de passe",
-  "login.submit": "Se connecter",
-  "login.error": "Identifiants invalides. Veuillez réessayer.",
-
-  "produits.title": "Liste des produits",
-  "produits.empty": "Aucun produit pour le moment.",
-  "produits.loading": "Chargement des produits..."
+  "produits.titre": "Liste des produits",
+  "produits.bouton.filtrer": "Filtrer les produits",
+  "produits.bouton.ajouter": "Ajouter un produit",
+  "produits.table.nom": "Nom",
+  "produits.table.code": "Code",
+  "produits.table.categorie": "Catégorie",
+  "produits.table.quantite": "Quantité",
+  "produits.table.prix": "Prix ($)",
+  "produits.table.actions": "Actions",
+  "produits.actions.modifier": "Modifier",
+  "produits.actions.supprimer": "Supprimer",
+  "produits.aucun": "Aucun produit trouvé."
 }
