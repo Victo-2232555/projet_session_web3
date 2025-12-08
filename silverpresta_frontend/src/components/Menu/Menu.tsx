@@ -33,7 +33,7 @@ function Menu() {
           </ul>
 
           <button
-            className="text-green hover:text-red-400 font-semibold"
+            className="text-white hover:text-red-400"
             onClick={() => logout()}
           >
             Se déconnecter

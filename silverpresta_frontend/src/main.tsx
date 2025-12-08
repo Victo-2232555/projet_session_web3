@@ -7,20 +7,18 @@ import LoginProvider from './contexts/LoginContext';
 import { IntlProvider } from 'react-intl';
 import frMessages from './lang/fr.json';
 import enMessages from './lang/en.json';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+//import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import './index.css';
 
-const theme = createTheme({
-  palette: { mode: 'light' },
-});
+// const theme = createTheme({
+//   palette: { mode: 'light' },
+// });
 
 const messages = { fr: frMessages, en: enMessages };
 const locale: 'fr' | 'en' = 'fr'; // je pourrai le rendre dynamique plus tard
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
       <IntlProvider locale={locale} messages={messages[locale]}>
         <LoginProvider>
           <BrowserRouter>
@@ -28,6 +26,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           </BrowserRouter>
         </LoginProvider>
       </IntlProvider>
-    </ThemeProvider>
   </React.StrictMode>
 );

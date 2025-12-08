@@ -76,7 +76,7 @@ function Login() {
               <button
                 type="button"
                 onClick={() => performLogin()}
-                className="bg-purple-500 hover:bg-purple-700 text-green font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:-translate-y-1"
+                className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:-translate-y-1"
               >
                 Se connecter
               </button>
