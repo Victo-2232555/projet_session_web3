@@ -30,8 +30,8 @@ function Login() {
       <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-2xl max-w-4xl">
         <div className="md:w-1/2 p-12 flex items-center justify-center">
           <img
-            src="../src/assets/boutique.png"
-            alt="Le chat valide ton login"
+            src="../src/assets/boutique.png"//cette image est générée avec DALL·E
+            alt="Une étagère de la boutique avec des produits"
             className="max-w-xs md:max-w-sm"
           />
         </div>
@@ -76,7 +76,7 @@ function Login() {
               <button
                 type="button"
                 onClick={() => performLogin()}
-                className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transform transition hover:-translate-y-"
+                className="bg-purple-500 hover:bg-purple-700 text-green font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:-translate-y-1"
               >
                 Se connecter
               </button>

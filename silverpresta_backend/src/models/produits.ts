@@ -49,7 +49,7 @@ const ProduitSchema = new Schema<IProduit>(
 
     description: {
       type: String,
-      required: [true, 'Chaque produit doit avoir une description.'],
+      required: [false, 'Chaque produit doit avoir une description.'],
       maxlength: [500, 'La description ne peut pas dépasser 500 caractères.']},
 
     quantite: {
@@ -59,12 +59,12 @@ const ProduitSchema = new Schema<IProduit>(
 
     seuilReapprovisionnement: {
       type: Number,
-      required: [true, 'Le seuil de réapprovisionnement est obligatoire.'],
+      required: [false, 'Le seuil de réapprovisionnement est obligatoire.'],
       min: [0, 'Le seuil de réapprovisionnement doit être positif.']},
 
     prixAchat: {
       type: Number,
-      required: [true, 'Le prix d\'achat est requis.'],
+      required: [false, 'Le prix d\'achat est requis.'],
       min: [0, 'Le prix d\'achat doit être positif.'],
     },
 
@@ -87,20 +87,20 @@ const ProduitSchema = new Schema<IProduit>(
 
     fournisseur: {
       type: String,
-      required: [true, 'Le fournisseur est obligatoire.'],
+      required: [false, 'Le fournisseur est obligatoire.'],
       maxlength: [150, 'Le nom du fournisseur ne peut pas dépasser 150 caractères.'],
     },
 
     ajoutePar: {
       type: Schema.Types.ObjectId,
       ref: 'Utilisateur',
-      required: [true, 'L\'utilisateur ayant ajouté le produit est obligatoire.'],
+      required: [false, 'L\'utilisateur ayant ajouté le produit est obligatoire.'],
     },
 
     misAJourPar: {
       type: Schema.Types.ObjectId,
       ref: 'Utilisateur',
-      required: [true, 'L\'utilisateur ayant mis à jour le produit est obligatoire.'],
+      required: [false, 'L\'utilisateur ayant mis à jour le produit est obligatoire.'],
     },
 
     urlImage: {
@@ -111,7 +111,7 @@ const ProduitSchema = new Schema<IProduit>(
 
     actif: {
       type: Boolean,
-      default: true,
+      default: false,
     },
 
     tags: {
